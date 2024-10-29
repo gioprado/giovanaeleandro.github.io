@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Responsiva</title>
+    <title>GIDAN</title>
     <style>
         /* Estilo do corpo */
         body {
@@ -25,7 +25,7 @@
             max-width: 300px;
             height: auto;
             margin-bottom: 20px;
-            border: 4px solid #fff; /* Borda branca com espessura aproximada de 2 mm */
+            border: 4px solid #fff;
             box-sizing: border-box;
         }
 
@@ -36,29 +36,41 @@
 
         /* Estilo da linha */
         .line {
-            width: 450px; /* Largura da linha */
-            height: 2px; /* Espessura da linha */
-            background-color: #fff; /* Cor da linha */
-            margin: 20px auto; /* Margem em cima e embaixo da linha, centralizada */
+            width: 524px;
+            height: 2px;
+            background-color: #fff;
+            margin: 20px auto;
+        }
+
+           /* Estilo do título visível */
+           .page-title {
+            color: #fff;
+            font-size: 36px;
+            font-family: "Stencil Std", fantasy; /* Define a fonte Stencil Std */
+            margin: 20px 0;
         }
     </style>
 </head>
 <body>
+    
+    <!-- Título visível -->
+    <h1 class="page-title">GIDAN</h1>
+
     <!-- Imagem centralizada com borda branca -->
     <img src="ny.jpg" alt="Imagem central" class="center-image">
 
     <!-- Data e contagem de tempo -->
     <div class="date-text">25 de agosto de 2024</div>
-    <br> <!-- Linha em branco adicionada aqui -->
+    <br>
     <div id="countTime" class="count-text"></div>
 
-    <br> <!-- Linha em branco antes da linha -->
+    <br>
 
     <!-- Linha branca com 3024 pixels de largura usando div -->
-    <div class="line"></div> <!-- Linha posicionada abaixo do contador -->
+    <div class="line"></div>
 
-    <br> <!-- Linha em branco -->
-    <div class="love-text">Eu te amo</div> <!-- Texto -->
+    <br>
+    <div class="love-text">Eu te amo</div>
     
     <script>
         // Data inicial: 25 de agosto de 2024
@@ -68,7 +80,6 @@
             const now = new Date();
             let diffInSeconds = Math.floor((now - startDate) / 1000);
 
-            // Calcula meses, dias, horas, minutos e segundos
             const months = Math.floor(diffInSeconds / (30 * 24 * 60 * 60));
             diffInSeconds %= (30 * 24 * 60 * 60);
 
@@ -81,12 +92,10 @@
             const minutes = Math.floor(diffInSeconds / 60);
             const seconds = diffInSeconds % 60;
 
-            // Atualiza o texto com o contador
             document.getElementById('countTime').textContent = 
                 `${months} meses, ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos junto com você`;
         }
 
-        // Atualiza o contador a cada segundo
         setInterval(updateTime, 1000);
     </script>
 </body>
