@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Responsiva</title>
+    <style>
+        /* Estilo do corpo */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        /* Estilo da imagem com borda */
+        .center-image {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 20px;
+            border: 4px solid #fff; /* Borda branca com espessura aproximada de 2 mm */
+            box-sizing: border-box;
+        }
+
+        /* Estilo do texto */
+        .count-text {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Imagem centralizada com borda branca -->
+    <img src="ny.jpg" alt="Imagem central" class="center-image">
+
+     <!-- Data e contagem de tempo -->
+     <div class="date-text">25 de agosto de 2024</div>
+     <div id="countTime" class="count-text"></div>
+ <br>
+ <br>
+     <script>
+         // Data inicial: 25 de agosto de 2024
+         const startDate = new Date('2024-08-25');
+ 
+         function updateTime() {
+             const now = new Date();
+             let diffInSeconds = Math.floor((now - startDate) / 1000);
+ 
+             // Calcula meses, dias, horas, minutos e segundos
+             const months = Math.floor(diffInSeconds / (30 * 24 * 60 * 60));
+             diffInSeconds %= (30 * 24 * 60 * 60);
+ 
+             const days = Math.floor(diffInSeconds / (24 * 60 * 60));
+             diffInSeconds %= (24 * 60 * 60);
+ 
+             const hours = Math.floor(diffInSeconds / (60 * 60));
+             diffInSeconds %= (60 * 60);
+ 
+             const minutes = Math.floor(diffInSeconds / 60);
+             const seconds = diffInSeconds % 60;
+ 
+             // Atualiza o texto com o contador
+             document.getElementById('countTime').textContent = 
+                 `${months} meses, ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos junto com você`;
+         }
+ 
+         // Atualiza o contador a cada segundo
+         setInterval(updateTime, 1000);
+     </script>
+ </body>
+ </html>
