@@ -41,6 +41,55 @@
             background-color: #fff;
             margin: 20px auto;
         }
+        /* Estilo do menu */
+        .menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+            z-index: 10;
+        }
+
+        /* Estilo do menu lateral */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Estilo dos links no menu lateral */
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #fff;
+            display: block;
+            transition: 0.3s;
+        }
+
+        /* Efeito hover nos links */
+        .sidebar a:hover {
+            background-color: #333;
+        }
+
+        /* Estilo do botão de fechar */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
 
            /* Estilo do título visível */
            .page-title {
@@ -53,6 +102,17 @@
 </head>
 <body>
     
+    <!-- Ícone do menu com três pontos -->
+    <div class="menu" onclick="openMenu()">&#x22EE;</div>
+
+    <!-- Menu lateral -->
+    <div id="sidebar" class="sidebar">
+        <span class="close-btn" onclick="closeMenu()">&times;</span>
+        <a href="pagina1.html">Carta Aberta</a>
+        <a href="pagina2.html">Momentos</a>
+        <a href="pagina3.html">10 Coisas que Amo em Você</a>
+    </div>
+
     <!-- Título visível -->
     <h1 class="page-title">GIDAN</h1>
 
@@ -73,6 +133,16 @@
     <div class="love-text">Eu te amo</div>
     
     <script>
+         
+        // Funções para abrir e fechar o menu
+        function openMenu() {
+            document.getElementById("sidebar").style.width = "250px";
+        }
+
+        function closeMenu() {
+            document.getElementById("sidebar").style.width = "0";
+        }
+
         // Data inicial: 25 de agosto de 2024
         const startDate = new Date('2024-08-25');
 
