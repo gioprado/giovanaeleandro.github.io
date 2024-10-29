@@ -33,45 +33,61 @@
         .count-text {
             font-size: 24px;
         }
+
+        /* Estilo da linha */
+        .line {
+            width: 524px; /* Largura da linha */
+            height: 2px; /* Espessura da linha */
+            background-color: #fff; /* Cor da linha */
+            margin: 20px auto; /* Margem em cima e embaixo da linha, centralizada */
+        }
     </style>
 </head>
 <body>
     <!-- Imagem centralizada com borda branca -->
     <img src="ny.jpg" alt="Imagem central" class="center-image">
 
-     <!-- Data e contagem de tempo -->
-     <div class="date-text">25 de agosto de 2024</div>
-     <div id="countTime" class="count-text"></div>
- <br>
- <br>
-     <script>
-         // Data inicial: 25 de agosto de 2024
-         const startDate = new Date('2024-08-25');
- 
-         function updateTime() {
-             const now = new Date();
-             let diffInSeconds = Math.floor((now - startDate) / 1000);
- 
-             // Calcula meses, dias, horas, minutos e segundos
-             const months = Math.floor(diffInSeconds / (30 * 24 * 60 * 60));
-             diffInSeconds %= (30 * 24 * 60 * 60);
- 
-             const days = Math.floor(diffInSeconds / (24 * 60 * 60));
-             diffInSeconds %= (24 * 60 * 60);
- 
-             const hours = Math.floor(diffInSeconds / (60 * 60));
-             diffInSeconds %= (60 * 60);
- 
-             const minutes = Math.floor(diffInSeconds / 60);
-             const seconds = diffInSeconds % 60;
- 
-             // Atualiza o texto com o contador
-             document.getElementById('countTime').textContent = 
-                 `${months} meses, ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos junto com você`;
-         }
- 
-         // Atualiza o contador a cada segundo
-         setInterval(updateTime, 1000);
-     </script>
- </body>
- </html>
+    <!-- Data e contagem de tempo -->
+    <div class="date-text">25 de agosto de 2024</div>
+    <br> <!-- Linha em branco adicionada aqui -->
+    <div id="countTime" class="count-text"></div>
+
+    <br> <!-- Linha em branco antes da linha -->
+
+    <!-- Linha branca com 3024 pixels de largura usando div -->
+    <div class="line"></div> <!-- Linha posicionada abaixo do contador -->
+
+    <br> <!-- Linha em branco -->
+    <div class="love-text">Eu te amo</div> <!-- Texto -->
+    
+    <script>
+        // Data inicial: 25 de agosto de 2024
+        const startDate = new Date('2024-08-25');
+
+        function updateTime() {
+            const now = new Date();
+            let diffInSeconds = Math.floor((now - startDate) / 1000);
+
+            // Calcula meses, dias, horas, minutos e segundos
+            const months = Math.floor(diffInSeconds / (30 * 24 * 60 * 60));
+            diffInSeconds %= (30 * 24 * 60 * 60);
+
+            const days = Math.floor(diffInSeconds / (24 * 60 * 60));
+            diffInSeconds %= (24 * 60 * 60);
+
+            const hours = Math.floor(diffInSeconds / (60 * 60));
+            diffInSeconds %= (60 * 60);
+
+            const minutes = Math.floor(diffInSeconds / 60);
+            const seconds = diffInSeconds % 60;
+
+            // Atualiza o texto com o contador
+            document.getElementById('countTime').textContent = 
+                `${months} meses, ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos junto com você`;
+        }
+
+        // Atualiza o contador a cada segundo
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
