@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIDANFLIX</title>
+<style>
+    /* Estilos gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #141414;
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color:#e50914;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Banner */
+.banner {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 4rem 1rem;
+}
+
+.banner h1 {
+    font-size: 2rem;
+}
+
+.banner .watch-button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Carrossel de filmes */
+.movie-section {
+    padding: 2rem 1rem;
+}
+
+.movie-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.movie-carousel {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+}
+
+.movie-card {
+    min-width: 150px;
+    color: #fff;
+}
+
+.movie-card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Rodapé */
+footer {
+    background-color: #141414;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <div class="logo">GIDANFLIX</div>
+        <nav>
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Séries</a></li>
+                <li><a href="#">Filmes</a></li>
+                <li><a href="#">Minha Lista</a></li>
+            </ul>
+        </nav>
+        <div class="user-icon">👤</div>
+    </header>
+
+    <main>
+        <section class="banner">
+            <h1>Bem-vindo ao GIDANFLIX</h1>
+            <p>Descubra uma seleção infinita de filmes e séries para todos os gostos!</p>
+            <button class="watch-button">Assistir Agora</button>
+        </section>
+
+        <section class="movie-section">
+            <h2>Destaques</h2>
+            <div class="movie-carousel">
+                <!-- Filmes de exemplo (pode adicionar mais) -->
+                <div class="movie-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Filme 1">
+                    <p>Filme 1</p>
+                </div>
+                <div class="movie-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Filme 2">
+                    <p>Filme 2</p>
+                </div>
+                <div class="movie-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Filme 3">
+                    <p>Filme 3</p>
+                </div>
+                <!-- Adicione mais filmes aqui -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 GIDANFLIX - Todos os direitos reservados.</p>
+    </footer>
+
+    <script> // Adicione interatividade ao botão de "Assistir Agora"
+        document.querySelector(".watch-button").addEventListener("click", () => {
+            alert("Iniciando a reprodução... Aproveite o filme!");
+        });
+        
+        // Adicione mais funcionalidades conforme necessário
+        console.log("GIDANFLIX pronto para uso!");
+        </script>
+</body>
+</html>
