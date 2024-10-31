@@ -90,6 +90,34 @@ header nav ul li a {
     border-radius: 8px;
 }
 
+/* Modal */
+.modal {
+    display: none; /* Oculto por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+}
+
 /* Rodapé */
 footer {
     background-color: #141414;
@@ -120,6 +148,18 @@ footer {
             <button class="watch-button">Assistir Agora</button>
         </section>
 
+<!-- Video Modal (Inicialmente oculto) -->
+<div class="modal" id="videoModal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <video id="videoPlayer" width="100%" controls>
+            <source src="gidanflix.mp4" type="video/mp4">
+            Seu navegador não suporta o elemento de vídeo.
+        </video>
+    </div>
+</div>
+</main>
+
         <section class="movie-section">
             <h2>Destaques</h2>
             <div class="movie-carousel">
@@ -141,6 +181,7 @@ footer {
         </section>
     </main>
 
+
     <footer>
         <p>© 2024 GIDANFLIX - Todos os direitos reservados.</p>
     </footer>
@@ -150,6 +191,34 @@ footer {
             alert("Iniciando a reprodução... Aproveite o filme!");
         });
         
+        // Seleciona o botão e o modal
+const watchButton = document.querySelector(".watch-button");
+const videoModal = document.getElementById("videoModal");
+const videoPlayer = document.getElementById("videoPlayer");
+const closeButton = document.querySelector(".close-button");
+
+// Função para abrir o modal e reproduzir o vídeo
+watchButton.addEventListener("click", () => {
+    videoModal.style.display = "flex";
+    videoPlayer.play();
+});
+
+// Função para fechar o modal e pausar o vídeo
+closeButton.addEventListener("click", () => {
+    videoModal.style.display = "none";
+    videoPlayer.pause();
+    videoPlayer.currentTime = 0;
+});
+
+// Fecha o modal ao clicar fora do vídeo
+window.addEventListener("click", (event) => {
+    if (event.target == videoModal) {
+        videoModal.style.display = "none";
+        videoPlayer.pause();
+        videoPlayer.currentTime = 0;
+    }
+});
+
         // Adicione mais funcionalidades conforme necessário
         console.log("GIDANFLIX pronto para uso!");
         </script>
