@@ -5,6 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Imagem A4</title>
     <style>
+    /* Estilo do menu */
+        .menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+            z-index: 10;
+        }
+
+        /* Estilo do menu lateral */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Estilo dos links no menu lateral */
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 14px;
+            color: #fff;
+            display: block;
+            transition: 0.3s;
+        }
+
+        /* Efeito hover nos links */
+        .sidebar a:hover {
+            background-color: #333;
+        }
+
+        /* Estilo do botão de fechar */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
         body {
             display: flex;
             justify-content: center;
