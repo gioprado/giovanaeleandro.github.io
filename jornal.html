@@ -3,123 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jornal do Amor - Casal do Ano</title>
+    <title>Imagem A4</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            margin: 0;
-            padding: 20px;
-            background-color: #000;
-        }
-       .container {
-            width: 700px;
-            background: white;
-            padding: 20px;
-            border: 1px solid #ddd;
-        }
-        .header, .footer {
-            text-align: center;
-            border-bottom: 2px solid #000;
-            padding-bottom: 10px;
-            font-family: 'Times New Roman', serif;
-        }
-        .header h1 {
-            font-size: 2.5em;
-            margin: 0;
-            font-weight: bold;
-        }
-        .sub-header, .footer {
-            font-size: 1.2em;
-            margin: 10px 0;
-            text-align: center;
-            font-weight: bold;
-            border-bottom: 2px solid #000;
-            padding-bottom: 10px;
-        }
-        .content {
-            display: flex;
-            margin-top: 20px;
-        }
-        .text-section, .image-section {
-            flex: 1;
-            padding: 10px;
-        }
-        .text-section {
-            border-right: 1px solid #000;
-        }
-        .text-section h3 {
-            margin: 0;
-            font-size: 1.2em;
-            text-align: center;
-        }
-        .text-section p {
-            font-size: 1em;
-            text-align: justify;
-            margin: 15px 0 0 0;
-        }
-        .image-section {
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 100vh; /* Para centralizar verticalmente */
+            margin: 0;
+            background-color: #000;
         }
-        .image-section img {
-            max-width: 100%; /* Para garantir que a imagem não exceda a largura da seção */
-            height: auto; /* Mantém a proporção da imagem */
+        .image-container {
+            width: 210mm; /* Largura A4 */
+            height: 297mm; /* Altura A4 */
+            overflow: hidden; /* Para evitar rolagem se a imagem for maior */
+            border: 1px solid #ddd; /* Borda para visualização */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white; /* Fundo branco */
         }
-        .separator {
-            border: none; /* Remove a borda padrão */
-            height: 1px; /* Define a altura da linha */
-            background-color: #000; /* Define a cor da linha */
-            margin: 20px 0; /* Espaço acima e abaixo da linha */
-        }
-        .since-section {
-            text-align: center;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-        .since-section div {
-            font-size: 1.2em;
-        }
-        .since-section .date {
-            font-size: 1.8em;
-            margin-top: 5px;
-        }
-        .footer {
-            padding-top: 10px;
-            font-size: 0.9em;
+        .image-container img {
+            max-width: 100%; /* Para garantir que a imagem se ajuste ao contêiner */
+            max-height: 100%; /* Para garantir que a imagem se ajuste ao contêiner */
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <p>JORNAL DO AMOR</p>
-            <h1>Casal do Ano</h1>
-        </div>
-        <div class="sub-header">EDIÇÃO ESPECIAL</div>
-
-        <div class="content">
-            <div class="text-section">
-                <h3>Giovana e Leandro </h3>
-                <p>Uma história de amor diretamente de Nova York, o que antes era apenas uma amizade se transformou em algo mais intenso e verdadeiro. Sem dúvidas, Nova York ficará marcado na vida dos dois como o início de uma vida juntos!</p>
-            </div>
-            <div class="image-section">
-                <img src="timessquare.jpg" alt="Imagem de Times Square">
-            </div>
-        </div>
-
-        <!-- Linha de separação -->
-        <hr class="separator">
-
-        <div class="since-section">
-            <div>DESDE</div>
-            <div class="date">25 AGO 2024</div>
-            <div>NOSSO DIA</div>
-        </div>
-
-        <div class="footer">Para sempre</div>
+    <div class="image-container">
+        <img src="nyt.jpg" alt="Imagem em formato A4">
     </div>
 </body>
 </html>
