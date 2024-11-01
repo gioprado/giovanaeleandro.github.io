@@ -48,11 +48,23 @@
             margin: 10px 0;
             font-size: 18px;
         }
+
         /* Estilo do texto */
         .motivo-text {
             font-size: 20px;
             margin-bottom: 20px;
             font-family: "Stencil Std", fantasy;
+        }
+
+        /* Estilo do banner dos motivos */
+        .motivo-banner {
+            background-color: #f5f5dc; /* Cor bege */
+            padding: 20px; /* Espaçamento interno */
+            border-radius: 10px; /* Bordas arredondadas */
+            color: black; /* Cor do texto */
+            max-width: 800px; /* Largura máxima do banner */
+            margin: 20px auto; /* Margem automática para centralizar */
+            text-align: left; /* Alinhamento do texto à esquerda */
         }
 
         /* Estilo do menu */
@@ -109,18 +121,16 @@
 </head>
 <body>
 
-     <!-- Ícone do menu com três pontos -->
-     <div class="menu" onclick="openMenu()">&#x22EE;</div>
+    <!-- Ícone do menu com três pontos -->
+    <div class="menu" onclick="openMenu()">&#x22EE;</div>
 
-     <!-- Menu lateral -->
+    <!-- Menu lateral -->
     <div id="sidebar" class="sidebar">
         <span class="close-btn" onclick="closeMenu()">&times;</span>
-        <a href="gel.html">Inicio</a>
         <a href="cartaaberta.html">Carta Aberta</a>
         <a href="Momentos.html">Momentos</a>
         <a href="10motivos.html">10 Coisas que Amo em Você</a>
         <a href="gidanflix.html">GIDANFLIX</a>
-        <a href="jornal.html">GIDAN NEWS</a>
     </div>
 
     <!-- Título da página -->
@@ -132,7 +142,7 @@
         <ul class="list">
             <li>Seu sorriso</li>
             <li>Seus olhos</li>
-            <li>Seu Abraço</li>
+            <li>Seu abraço</li>
             <li>Seu beijo</li>
             <li>Seu senso de humor</li>
         </ul>
@@ -153,25 +163,24 @@
     <div class="motivo-text">Por que?</div>
     <div class="love-text">10 motivos são poucos para expressar o quanto eu amo você mas...</div>
 
-    <!--Lista Motivos-->
-    <div class = "list-container">
+    <!-- Lista Motivos com banner -->
+    <div class="motivo-banner">
         <ul class="list">
-            <li>Seu sorriso</li>
-            <a>Porque você fica ainda mais lindo quando sorri</a>
+            <li>Seu sorriso
+                <br>Porque você fica ainda mais lindo quando sorri
+            </li>
             <br>
+            <li>Seus olhos
+                <br>Porque eu amo o castanho deles, como ficam claros quando você está no sol e como se fecham quando você sorri
+            </li>
             <br>
-            <li>Seus olhos</li>
-            <a>Porque eu amo o castanho deles,como ficam claros quando você esta no sol e como se fecham quando você sorri</a>
-            <br>
-            <br>
-            <li>Seu abraço</li>
-            <a>Porque me sinto a pessoa mais segura do mundo quando estou nos seus braços</a>
-
+            <li>Seu abraço
+                <br>Porque me sinto a pessoa mais segura do mundo quando estou nos seus braços
+            </li>
         </ul>
     </div>
 
-<script>
-         
+    <script>
         // Funções para abrir e fechar o menu
         function openMenu() {
             document.getElementById("sidebar").style.width = "250px";
@@ -180,6 +189,6 @@
         function closeMenu() {
             document.getElementById("sidebar").style.width = "0";
         }
-</script>
+    </script>
 </body>
 </html>
