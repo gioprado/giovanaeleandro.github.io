@@ -3,45 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carta Aberta</title>
+    <title>Carta Interativa</title>
     <style>
-        /* Estilo do corpo */
+
+           /* Estilo do título visível */
+           .page-title {
+            color: #fff;
+            font-size: 36px;
+            font-family: "Stencil Std", fantasy; /* Define a fonte Stencil Std */
+            margin: 20px 0;
+        }
+        
+        /* Estilos gerais */
         body {
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            min-height: 100vh;
+            height: 100vh;
             margin: 0;
             background-color: #000;
-            color: #fff;
             font-family: Arial, sans-serif;
-            text-align: center;
         }
 
-        /* Estilo do título */
-        .title {
-            font-size: 36px;
+        /* Estilo da imagem */
+        .card-image {
+            width: 200px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s;
             margin-bottom: 20px;
-            font-family: "Stencil Std", fantasy;
         }
 
-        h1 {
-            color: #333;
-        }
-        iframe {
-            width: 80%;
-            height: 450px;
-            border: none;
+        .carta-open{
+            color: #fff;
+            font-size: 20px;
+            font-family: Arial, Helvetica, sans-serif; /* Define a fonte Stencil Std */
+            margin: 20px 0;
         }
 
+        /* Efeito de "zoom" ao passar o mouse */
+        .card-image:hover {
+            transform: scale(1.05);
+        }
+
+        /* Estilo do texto oculto */
+        .hidden-text {
+            max-width: 300px;
+            font-size: 1rem;
+            color: #f0f0f0;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Classe para exibir o texto */
+        .show-text {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Título da página -->
-    <h1 class="title">Carta aberta para você</h1>
-<a>texto</a>
+    <!-- Título visível -->
+    <h1 class="page-title">CARTA ABERTA</h1>
+
+    <!-- Imagem da carta -->
+    <img src="carta.jpg" alt="Imagem de uma carta" class="card-image" onclick="toggleText()">
+    <div class="carta-open">(clique na carta para abrir...)</div> 
+
+    <!-- Texto oculto -->
+    <div class="hidden-text" id="hiddenText">
+        <p>Esta é uma mensagem especial para você! Espero que esta mensagem traga alegria ao seu dia.</p>
+    </div>
+
+    <script>
+        function toggleText() {
+            // Alterna a visibilidade do texto ao clicar na imagem
+            const hiddenText = document.getElementById('hiddenText');
+            hiddenText.classList.toggle('show-text');
+        }
+    </script>
 
 </body>
 </html>
