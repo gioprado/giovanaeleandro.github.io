@@ -26,12 +26,18 @@
             font-family: "Stencil Std", fantasy;
         }
 
-    
-        /* Estilo do texto */
+        /* Estilo do texto da música */
         .musica-text {
             font-size: 20px;
             margin-bottom: 20px;
             font-family: Arial, sans-serif;
+            color: black; /* Altera a cor do texto para preto */
+            padding: 20px; /* Espaçamento interno do banner */
+            background-color: white; /* Fundo branco do banner */
+            border-radius: 10px; /* Bordas arredondadas */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+            max-width: 600px; /* Largura máxima do banner */
+            margin: 0 auto; /* Centraliza o banner */
         }
 
         /* Estilo do menu */
@@ -84,41 +90,38 @@
             cursor: pointer;
         }
 
-         /* Estilo do iframe */
-         iframe {
+        /* Estilo do iframe */
+        iframe {
             width: 80%; /* Largura do iframe */
             height: 450px; /* Altura do iframe */
             border: none;
             margin-bottom: 20px; /* Espaço abaixo do vídeo */
         }
-
     </style>
 </head>
 <body>
 
-     <!-- Ícone do menu com três pontos -->
-     <div class="menu" onclick="openMenu()">&#x22EE;</div>
+    <!-- Ícone do menu com três pontos -->
+    <div class="menu" onclick="openMenu()">&#x22EE;</div>
 
-     <!-- Menu lateral -->
+    <!-- Menu lateral -->
     <div id="sidebar" class="sidebar">
         <span class="close-btn" onclick="closeMenu()">&times;</span>
-        <a href="gel.html">Inicio</a>
         <a href="cartaaberta.html">Carta Aberta</a>
         <a href="Momentos.html">Momentos</a>
         <a href="10motivos.html">10 Coisas que Amo em Você</a>
         <a href="gidanflix.html">GIDANFLIX</a>
-        <a href="jornal.html"> GIDAN NEWS</a>
     </div>
-
- 
 
     <!-- Título da página -->
     <h1 class="title">Musica que me lembra Você</h1>
 
-      <!-- Iframe do vídeo do YouTube -->
-      <iframe src="https://www.youtube.com/embed/oUz6WM-QXyM" allowfullscreen></iframe>
+    <!-- Iframe do vídeo do YouTube -->
+    <iframe src="https://www.youtube.com/embed/oUz6WM-QXyM" allowfullscreen></iframe>
 
-    <div class="musica-text">E no meio de tanta gente eu encontrei você
+    <!-- Texto da música dentro do banner -->
+    <div class="musica-text">
+        E no meio de tanta gente eu encontrei você
         <br>
         Entre tanta gente chata sem nenhuma graça, você veio
         <br>
@@ -166,12 +169,9 @@
         <br>
         Por isso não me deixe nunca, nunca mais
         <br>
-        </div>
+    </div>
 
-    
-
-<script>
-         
+    <script>
         // Funções para abrir e fechar o menu
         function openMenu() {
             document.getElementById("sidebar").style.width = "250px";
@@ -180,6 +180,6 @@
         function closeMenu() {
             document.getElementById("sidebar").style.width = "0";
         }
-</script>
+    </script>
 </body>
 </html>
