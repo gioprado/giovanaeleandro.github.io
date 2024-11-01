@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carta Interativa</title>
+    <title>Efeito de Abrir Envelope</title>
     <style>
-        /* Estilo do título visível */
-        .page-title {
-            color: #fff;
-            font-size: 25px;
-            font-family: "Stencil Std", fantasy; /* Define a fonte Stencil Std */
-            margin-top: 0.5px; /* Ajuste para colocar o título mais próximo do topo */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #000;
+            margin: 0;
         }
-
-        /* Estilo do menu */
-        .menu {
+ /* Estilo do menu */
+ .menu {
             position: fixed;
             top: 20px;
             left: 20px;
@@ -62,17 +63,12 @@
             font-size: 24px;
             cursor: pointer;
         }
-
-        /* Estilos gerais */
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            height: 100vh;
-            margin: 0;
-            background-color: #000;
-            font-family: Arial, sans-serif;
+        /* Estilo do título */
+        .page-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #f0f0f0;
+            font-family: "Stencil Std", fantasy;
         }
 
         /* Estilo da imagem */
@@ -80,65 +76,58 @@
             width: 200px;
             height: auto;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: transform 0.3s, opacity 0.5s ease;
             margin-bottom: 20px;
         }
 
-        .carta-open {
-            color: #fff;
-            font-size: 20px;
-            font-family: Arial, Helvetica, sans-serif; /* Define a fonte Stencil Std */
-            margin: 20px 0;
-        }
-
-        /* Efeito de "zoom" ao passar o mouse */
-        .card-image:hover {
-            transform: scale(1.05);
-        }
-
-        /* Estilo do texto oculto */
+        /* Estilo do texto oculto com rolagem */
         .hidden-text {
             max-width: 300px;
             font-size: 1rem;
             color: #f0f0f0;
             text-align: center;
             opacity: 0;
-            height: 0;
-            overflow: hidden;
-            transition: opacity 0.5s ease, height 0.5s ease;
+            max-height: 0;
+            overflow-y: hidden;
+            transition: opacity 0.5s ease, max-height 0.5s ease;
         }
 
-        /* Classe para exibir o texto com efeito de slide */
+        /* Classe para exibir o texto */
         .show-text {
             opacity: 1;
-            height: auto;
-            transition: opacity 0.5s ease, height 0.5s ease;
+            max-height: 500px; /* Define uma altura máxima para permitir rolagem */
+            overflow-y: auto;  /* Exibe a barra de rolagem para texto longo */
         }
 
+        /* Classe para ocultar a imagem */
+        .hide-image {
+            opacity: 0;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Ícone do menu com três pontos -->
-    <div class="menu" onclick="openMenu()">&#x22EE;</div>
+        <!-- Ícone do menu com três pontos -->
+        <div class="menu" onclick="openMenu()">&#x22EE;</div>
 
-    <!-- Menu lateral -->
-    <div id="sidebar" class="sidebar">
-        <span class="close-btn" onclick="closeMenu()">&times;</span>
-        <a href="cartaaberta.html">Carta Aberta</a>
-        <a href="Momentos.html">Momentos</a>
-        <a href="10motivos.html">10 Coisas que Amo em Você</a>
-        <a href="gidanflix.html">GIDANFLIX</a>
-    </div>
+        <!-- Menu lateral -->
+        <div id="sidebar" class="sidebar">
+            <span class="close-btn" onclick="closeMenu()">&times;</span>
+            <a href="cartaaberta.html">Carta Aberta</a>
+            <a href="Momentos.html">Momentos</a>
+            <a href="10motivos.html">10 Coisas que Amo em Você</a>
+            <a href="gidanflix.html">GIDANFLIX</a>
+        </div>
 
     <!-- Título visível -->
     <h1 class="page-title">CARTA ABERTA</h1>
 
     <!-- Imagem da carta -->
-    <img src="carta.jpg" alt="Imagem de uma carta" class="card-image" onclick="toggleText()">
-    <div class="carta-open">(clique na carta para abrir...)</div> 
+    <img src="carta.jpg" alt="Imagem de uma carta" class="card-image" id="cardImage" onclick="toggleText()">
+    <div class="carta-open" id="clickHint">(clique na carta para abrir...)</div> 
 
-    <!-- Texto oculto -->
+    <!-- Texto oculto abaixo do título -->
     <div class="hidden-text" id="hiddenText">
         <p>Sempre achei que o amor chegaria de uma forma avassaladora na minha vida, mas ele chegou quando eu menos esperava em um momento que não poderia ser melhor. O amor chegou de forma calma, mostrando que não precisa ser grandioso para ser grande na minha vida.</p>
         <br>
@@ -148,8 +137,8 @@
     </div>
 
     <script>
-        // Funções para abrir e fechar o menu
-        function openMenu() {
+           // Funções para abrir e fechar o menu
+           function openMenu() {
             document.getElementById("sidebar").style.width = "250px";
         }
 
@@ -157,18 +146,20 @@
             document.getElementById("sidebar").style.width = "0";
         }
 
-        // Alterna a visibilidade do texto ao clicar na imagem
+        // Função para alternar a visibilidade do texto e ocultar a imagem
         function toggleText() {
             const hiddenText = document.getElementById('hiddenText');
+            const cardImage = document.getElementById('cardImage');
+            const clickHint = document.getElementById('clickHint');
 
+            hiddenText.classList.toggle('show-text');
+            
             if (hiddenText.classList.contains('show-text')) {
-                hiddenText.classList.remove('show-text');
-                hiddenText.style.height = '0'; // Reseta a altura ao fechar
-                hiddenText.style.opacity = '0'; // Reseta a opacidade ao fechar
+                cardImage.classList.add('hide-image'); // Esconde a imagem
+                clickHint.style.display = 'none'; // Esconde o aviso de clique
             } else {
-                hiddenText.classList.add('show-text');
-                hiddenText.style.height = 'auto'; // Define a altura para auto ao abrir
-                hiddenText.style.opacity = '1'; // Define a opacidade para 1 ao abrir
+                cardImage.classList.remove('hide-image'); // Exibe a imagem
+                clickHint.style.display = 'block'; // Exibe o aviso de clique
             }
         }
     </script>
