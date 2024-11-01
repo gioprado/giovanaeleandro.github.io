@@ -22,12 +22,63 @@ header {
     align-items: center;
     justify-content: space-between;
 }
+/* Estilo do menu */
+.menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+            z-index: 10;
+        }
 
-header .logo {
-    font-size: 1.5rem;
+        /* Estilo do menu lateral */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Estilo dos links no menu lateral */
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 14px;
+            color: #fff;
+            display: block;
+            transition: 0.3s;
+        }
+
+        /* Efeito hover nos links */
+        .sidebar a:hover {
+            background-color: #333;
+        }
+
+        /* Estilo do botão de fechar */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        header .logo {
+    font-size: 1.0rem;
     font-weight: bold;
-    color:#e50914;
+    color: #e50914;
+    margin-left: 0.5cm; /* Desloca a logo 2 cm para a direita */
 }
+
 
 header nav ul {
     list-style: none;
@@ -129,6 +180,19 @@ footer {
 </style>
 </head>
 <body>
+
+    <!-- Ícone do menu com três pontos -->
+    <div class="menu" onclick="openMenu()">&#x22EE;</div>
+
+    <!-- Menu lateral -->
+    <div id="sidebar" class="sidebar">
+        <span class="close-btn" onclick="closeMenu()">&times;</span>
+        <a href="cartaaberta.html">Carta Aberta</a>
+        <a href="Momentos.html">Momentos</a>
+        <a href="10motivos.html">10 Coisas que Amo em Você</a>
+        <a href="gidanflix.html">GIDANFLIX</a>
+    </div>
+
     <header>
         <div class="logo">GIDANFLIX</div>
         <nav>
@@ -190,7 +254,17 @@ footer {
         <p>© 2024 GIDANFLIX - Todos os direitos reservados.</p>
     </footer>
 
-    <script> // Adicione interatividade ao botão de "Assistir Agora"
+    <script> 
+    // Funções para abrir e fechar o menu
+    function openMenu() {
+            document.getElementById("sidebar").style.width = "250px";
+        }
+
+        function closeMenu() {
+            document.getElementById("sidebar").style.width = "0";
+        }
+
+    // Adicione interatividade ao botão de "Assistir Agora"
         document.querySelector(".watch-button").addEventListener("click", () => {
             alert("Iniciando a reprodução... Aproveite o filme!");
         });
