@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cupons do Amor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 10px;
+            background-color: #000;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between; /* Para distribuir as colunas */
+            gap: 2cm; /* Espaçamento entre as colunas de 2 centímetros */
+        }
+        .column {
+            flex: 1; /* Cada coluna ocupa a mesma largura */
+            display: flex;
+            flex-direction: column; /* Coloca as imagens em uma coluna */
+            align-items: center; /* Centraliza as imagens horizontalmente */
+        }
+        .image-container {
+            width: 50%; /* Cada imagem ocupa 50% da largura do contêiner */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden; /* Para evitar que a imagem saia do contêiner */
+            margin-bottom: 20px; /* Espaçamento entre as imagens */
+        }
+        .image-container img {
+            width: 100%; /* Imagem ocupa 100% do contêiner */
+            height: auto; /* Mantém a proporção da imagem */
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff; /* Cor do título */
+            font-family: "Stencil Std", fantasy;
+        }
+
+        .cupom-text { /* Correção do nome da classe */
+            text-align: center; /* Correção da propriedade */
+            margin-bottom: 20px;
+            color: #a90a0a; /* Cor do texto */
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Cupons do Amor</h1>
+    <div class="container">
+        <div class="column">
+            <div class="image-container">
+                <a href="https://calendly.com/giovanaprado29/30min" target="_blank">
+                    <img src="cupom1.jpg" alt="Cupom 1">
+                </a>
+            </div>
+            <div class="image-container">
+                <a href="https://calendly.com/giovanaprado29/30min" target="_blank">
+                    <img src="cupom2.jpg" alt="Cupom 2">
+                </a>
+            </div>
+            <div class="image-container">
+                <a href="https://calendly.com/giovanaprado29/30min" target="_blank">
+                    <img src="cupom3.jpg" alt="Cupom 3">
+                </a>
+            </div>
+        </div>
+        <div class="column">
+            <div class="image-container">
+                <a href="https://calendly.com/giovanaprado29/30min" target="_blank">
+                    <img src="cupom4.jpg" alt="Cupom 4">
+                </a>
+            </div>
+            <div class="image-container">
+                <a href="https://calendly.com/giovanaprado29/30min" target="_blank">
+                    <img src="cupom5.jpg" alt="Cupom 5">
+                </a>
+            </div>
+            <div class="image-container">
+                <a href="https://calendly.com/giovanaprado29/30min" target="_blank">
+                    <img src="cupom6.jpg" alt="Cupom 6">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="cupom-text">
+        <p>USE QUANDO QUISER, OS CUPONS NÃO EXPIRAM!!</p>
+    </div>
+</body>
+</html>
