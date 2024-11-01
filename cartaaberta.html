@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carta Interativa</title>
     <style>
+        /* Estilo do título visível */
+        .page-title {
+            color: #fff;
+            font-size: 25px;
+            font-family: "Stencil Std", fantasy; /* Define a fonte Stencil Std */
+            margin-top: 0.5px; /* Ajuste para colocar o título mais próximo do topo */
+        }
 
-     /* Estilo do título visível */
-.page-title {
-    color: #fff;
-    font-size: 25px;
-    font-family: "Stencil Std", fantasy; /* Define a fonte Stencil Std */
-    margin-top: 0.5px; /* Ajuste para colocar o título mais próximo do topo */
-}
-
-/* Estilo do menu */
-.menu {
+        /* Estilo do menu */
+        .menu {
             position: fixed;
             top: 20px;
             left: 20px;
@@ -85,7 +84,7 @@
             margin-bottom: 20px;
         }
 
-        .carta-open{
+        .carta-open {
             color: #fff;
             font-size: 20px;
             font-family: Arial, Helvetica, sans-serif; /* Define a fonte Stencil Std */
@@ -97,8 +96,8 @@
             transform: scale(1.05);
         }
 
-         /* Estilo do texto oculto */
-         .hidden-text {
+        /* Estilo do texto oculto */
+        .hidden-text {
             max-width: 300px;
             font-size: 1rem;
             color: #f0f0f0;
@@ -113,7 +112,9 @@
         .show-text {
             opacity: 1;
             height: auto;
+            transition: opacity 0.5s ease, height 0.5s ease;
         }
+
     </style>
 </head>
 <body>
@@ -139,17 +140,16 @@
 
     <!-- Texto oculto -->
     <div class="hidden-text" id="hiddenText">
-        <p>Sempre achei que o amor chegaria de uma forma avassaladora na minha vida mas ele chegou quando eu menos esperava em um momento que não poderia ser melhor. O amor chegou de forma calma mostrando que não precisa ser grandioso pra ser grande na minha vida.</p>
-<br>
-<p>Com vc eu tenho vivido meus melhores momentos, as melhores aventuras, as melhores risadas, o melhor sexo e acima de tudo vc tem sido minha melhor companhia. Você soube me mostrar uma forma leve de amar me trouxe paz quando eu achava que não encontraria a calmaria na loucura da minha vida. Te amar tem sido a coisa mais fácil e mais leve que já fiz em toda a minha vida, vc é meu primeiro pensamento ao acordar e o meu último na hora de dormir, vc é a pessoa que traz cor aos meus dias cinzentos, ninguém jamais me teve de maneira tão verdadeira e sincera como vc me tem. 
-<</p>
-    br>
-<p>Eu não fui o seu primeiro amor mas espero que eu possa ser o último, acho incrível que mesmo sendo jovens conquistamos momentos incríveis juntos e conquistaremos um futuro ainda mais igncrível ao lado um do outro. Estou tão feliz de poder compartilhar minha vida com você, eu te amo ❤️❤️❤️</p>
+        <p>Sempre achei que o amor chegaria de uma forma avassaladora na minha vida, mas ele chegou quando eu menos esperava em um momento que não poderia ser melhor. O amor chegou de forma calma, mostrando que não precisa ser grandioso para ser grande na minha vida.</p>
+        <br>
+        <p>Com você eu tenho vivido meus melhores momentos, as melhores aventuras, as melhores risadas, o melhor sexo e acima de tudo, você tem sido minha melhor companhia. Você soube me mostrar uma forma leve de amar, me trouxe paz quando eu achava que não encontraria a calmaria na loucura da minha vida. Te amar tem sido a coisa mais fácil e mais leve que já fiz em toda a minha vida, você é meu primeiro pensamento ao acordar e o meu último na hora de dormir, você é a pessoa que traz cor aos meus dias cinzentos, ninguém jamais me teve de maneira tão verdadeira e sincera como você me tem.</p>
+        <br>
+        <p>Eu não fui o seu primeiro amor, mas espero que eu possa ser o último. Acho incrível que mesmo sendo jovens, conquistamos momentos incríveis juntos e conquistaremos um futuro ainda mais incrível ao lado um do outro. Estou tão feliz de poder compartilhar minha vida com você, eu te amo ❤️❤️❤️</p>
     </div>
 
     <script>
-          // Funções para abrir e fechar o menu
-          function openMenu() {
+        // Funções para abrir e fechar o menu
+        function openMenu() {
             document.getElementById("sidebar").style.width = "250px";
         }
 
@@ -157,10 +157,19 @@
             document.getElementById("sidebar").style.width = "0";
         }
 
-       // Alterna a visibilidade do texto ao clicar na imagem
-       function toggleText() {
+        // Alterna a visibilidade do texto ao clicar na imagem
+        function toggleText() {
             const hiddenText = document.getElementById('hiddenText');
-            hiddenText.classList.toggle('show-text');
+
+            if (hiddenText.classList.contains('show-text')) {
+                hiddenText.classList.remove('show-text');
+                hiddenText.style.height = '0'; // Reseta a altura ao fechar
+                hiddenText.style.opacity = '0'; // Reseta a opacidade ao fechar
+            } else {
+                hiddenText.classList.add('show-text');
+                hiddenText.style.height = 'auto'; // Define a altura para auto ao abrir
+                hiddenText.style.opacity = '1'; // Define a opacidade para 1 ao abrir
+            }
         }
     </script>
 
