@@ -13,9 +13,11 @@
             height: 100vh;
             background-color: #000;
             margin: 0;
+            overflow-x: hidden; /* Impede a rolagem horizontal */
         }
- /* Estilo do menu */
- .menu {
+
+        /* Estilo do menu */
+        .menu {
             position: fixed;
             top: 20px;
             left: 20px;
@@ -40,7 +42,6 @@
             font-family: Arial, sans-serif;
         }
 
-        /* Estilo dos links no menu lateral */
         .sidebar a {
             padding: 10px 15px;
             text-decoration: none;
@@ -50,12 +51,10 @@
             transition: 0.3s;
         }
 
-        /* Efeito hover nos links */
         .sidebar a:hover {
             background-color: #333;
         }
 
-        /* Estilo do botão de fechar */
         .close-btn {
             position: absolute;
             top: 20px;
@@ -63,7 +62,7 @@
             font-size: 24px;
             cursor: pointer;
         }
-        /* Estilo do título */
+
         .page-title {
             font-size: 2rem;
             margin-bottom: 20px;
@@ -71,7 +70,6 @@
             font-family: "Stencil Std", fantasy;
         }
 
-        /* Estilo da imagem */
         .card-image {
             width: 200px;
             height: auto;
@@ -80,26 +78,22 @@
             margin-bottom: 20px;
         }
 
-        /* Estilo do texto oculto com rolagem */
         .hidden-text {
-            max-width: 300px;
+            max-width: 800px;
             font-size: 1rem;
             color: #f0f0f0;
             text-align: center;
             opacity: 0;
             max-height: 0;
-            overflow-y: hidden;
-            transition: opacity 0.5s ease, max-height 0.5s ease;
+            transition: opacity 0.5s ease;
         }
 
-        /* Classe para exibir o texto */
         .show-text {
             opacity: 1;
-            max-height: 500px; /* Define uma altura máxima para permitir rolagem */
-            overflow-y: auto;  /* Exibe a barra de rolagem para texto longo */
+            max-height: none; /* Remove o limite de altura */
+            padding: 20px; /* Adiciona um espaçamento para facilitar a leitura */
         }
 
-        /* Classe para ocultar a imagem */
         .hide-image {
             opacity: 0;
             pointer-events: none;
@@ -108,17 +102,17 @@
 </head>
 <body>
 
-        <!-- Ícone do menu com três pontos -->
-        <div class="menu" onclick="openMenu()">&#x22EE;</div>
+    <!-- Ícone do menu com três pontos -->
+    <div class="menu" onclick="openMenu()">&#x22EE;</div>
 
-        <!-- Menu lateral -->
-        <div id="sidebar" class="sidebar">
-            <span class="close-btn" onclick="closeMenu()">&times;</span>
-            <a href="cartaaberta.html">Carta Aberta</a>
-            <a href="Momentos.html">Momentos</a>
-            <a href="10motivos.html">10 Coisas que Amo em Você</a>
-            <a href="gidanflix.html">GIDANFLIX</a>
-        </div>
+    <!-- Menu lateral -->
+    <div id="sidebar" class="sidebar">
+        <span class="close-btn" onclick="closeMenu()">&times;</span>
+        <a href="cartaaberta.html">Carta Aberta</a>
+        <a href="Momentos.html">Momentos</a>
+        <a href="10motivos.html">10 Coisas que Amo em Você</a>
+        <a href="gidanflix.html">GIDANFLIX</a>
+    </div>
 
     <!-- Título visível -->
     <h1 class="page-title">CARTA ABERTA</h1>
@@ -137,8 +131,7 @@
     </div>
 
     <script>
-           // Funções para abrir e fechar o menu
-           function openMenu() {
+        function openMenu() {
             document.getElementById("sidebar").style.width = "250px";
         }
 
@@ -146,21 +139,15 @@
             document.getElementById("sidebar").style.width = "0";
         }
 
-        // Função para alternar a visibilidade do texto e ocultar a imagem
         function toggleText() {
-            const hiddenText = document.getElementById('hiddenText');
-            const cardImage = document.getElementById('cardImage');
-            const clickHint = document.getElementById('clickHint');
+            const cardImage = document.getElementById("cardImage");
+            const hiddenText = document.getElementById("hiddenText");
+            const clickHint = document.getElementById("clickHint");
 
-            hiddenText.classList.toggle('show-text');
-            
-            if (hiddenText.classList.contains('show-text')) {
-                cardImage.classList.add('hide-image'); // Esconde a imagem
-                clickHint.style.display = 'none'; // Esconde o aviso de clique
-            } else {
-                cardImage.classList.remove('hide-image'); // Exibe a imagem
-                clickHint.style.display = 'block'; // Exibe o aviso de clique
-            }
+            // Oculta a imagem e o texto de dica, e mostra o texto com animação
+            cardImage.classList.add("hide-image");
+            hiddenText.classList.add("show-text");
+            clickHint.style.display = "none";
         }
     </script>
 
