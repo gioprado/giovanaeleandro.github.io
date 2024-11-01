@@ -6,13 +6,14 @@
     <title>Carta Interativa</title>
     <style>
 
-           /* Estilo do título visível */
-           .page-title {
-            color: #fff;
-            font-size: 25px;
-            font-family: "Stencil Std", fantasy; /* Define a fonte Stencil Std */
-            margin: 20px 0;
-        }
+     /* Estilo do título visível */
+.page-title {
+    color: #fff;
+    font-size: 25px;
+    font-family: "Stencil Std", fantasy; /* Define a fonte Stencil Std */
+    margin-top: 0.5px; /* Ajuste para colocar o título mais próximo do topo */
+}
+
 /* Estilo do menu */
 .menu {
             position: fixed;
@@ -96,19 +97,22 @@
             transform: scale(1.05);
         }
 
-        /* Estilo do texto oculto */
-        .hidden-text {
+         /* Estilo do texto oculto */
+         .hidden-text {
             max-width: 300px;
             font-size: 1rem;
             color: #f0f0f0;
             text-align: center;
             opacity: 0;
-            transition: opacity 0.5s ease;
+            height: 0;
+            overflow: hidden;
+            transition: opacity 0.5s ease, height 0.5s ease;
         }
 
-        /* Classe para exibir o texto */
+        /* Classe para exibir o texto com efeito de slide */
         .show-text {
             opacity: 1;
+            height: auto;
         }
     </style>
 </head>
@@ -147,9 +151,9 @@
         function closeMenu() {
             document.getElementById("sidebar").style.width = "0";
         }
-        
-        function toggleText() {
-            // Alterna a visibilidade do texto ao clicar na imagem
+
+       // Alterna a visibilidade do texto ao clicar na imagem
+       function toggleText() {
             const hiddenText = document.getElementById('hiddenText');
             hiddenText.classList.toggle('show-text');
         }
