@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memórias do Filho</title>
+    <style>
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 10px #fff, 0 0 20px #fff; }
+            50% { text-shadow: 0 0 20px #7dd3fc, 0 0 30px #7dd3fc; }
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            background-color: #000;
+            z-index: 5;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 36px;
+            font-family: "Stencil Std", fantasy;
+            animation: glow 2.5s infinite;
+            margin: 0;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            padding: 120px 10px 20px 10px; /* padding-top para não cobrir pelo header */
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 3px solid #fff;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 12px;
+            border: 4px solid #fff;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close:hover {
+            color: #bbb;
+        }
+
+        .menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+            z-index: 10;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 14px;
+            color: #fff;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #333;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="menu" onclick="openMenu()">&#x22EE;</div>
+
+    <div id="sidebar" class="sidebar">
+        <span class="close-btn" onclick="closeMenu()">&times;</span>
+        <a href="gel.html">Início</a>
+        <a href="cartaaberta.html">Carta Aberta</a>
+        <a href="Momentos.html">Música que Lembra Você</a>
+        <a href="10motivos.html">10 Coisas que Amo em Você</a>
+        <a href="gidanflix.html">GIDANFLIX</a>
+        <a href="jornal.html">GIDAN NEWS</a>
+        <a href="cupons.html">CUPONS</a>
+    </div>
+
+    <header>
+        <h1>Thomas Memories</h1>
+    </header>
+
+    <div class="gallery">
+        <img src="positivo.jpg" alt="Quando o positivo veio" />
+        <img src="revelacao.jpg" alt="Quando descobri que era menino" />
+        <img src="nascimento.jpg" alt="Quando nasceu" />
+        <img src="1mes.jpg" alt="1 mês" />
+    </div>
+
+    <div class="modal" id="photoModal">
+        <span class="close" id="closeModal">&times;</span>
+        <img id="modalImage" src="" alt="Foto ampliada" />
+    </div>
+
+    <script>
+        const modal = document.getElementById('photoModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeBtn = document.getElementById('closeModal');
+
+        document.querySelectorAll('.gallery img').forEach(img => {
+            img.addEventListener('click', () => {
+                modal.style.display = 'flex';
+                modalImg.src = img.src;
+                modalImg.alt = img.alt;
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        function openMenu() {
+            document.getElementById('sidebar').style.width = '250px';
+        }
+
+        function closeMenu() {
+            document.getElementById('sidebar').style.width = '0';
+        }
+    </script>
+</body>
+</html>
