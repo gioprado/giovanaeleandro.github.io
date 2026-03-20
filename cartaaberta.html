@@ -1,165 +1,344 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carta aberta</title>
-    <style>
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            height: 100vh;
-            background-color: #000;
-            margin: 0;
-            overflow-x: hidden; /* Impede a rolagem horizontal */
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GIDANMAIL</title>
 
-        /* Estilo do menu */
-        .menu {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            color: #fff;
-            z-index: 10;
-        }
+<style>
 
-        /* Estilo do menu lateral */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            overflow-x: hidden;
-            transition: 0.3s;
-            padding-top: 60px;
-            color: #fff;
-            font-family: Arial, sans-serif;
-        }
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#111;
+    color:white;
+}
 
-        .sidebar a {
-            padding: 10px 15px;
-            text-decoration: none;
-            font-size: 14px;
-            color: #fff;
-            display: block;
-            transition: 0.3s;
-        }
 
-        .sidebar a:hover {
-            background-color: #333;
-        }
+/* MENU DO SITE */
 
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 24px;
-            cursor: pointer;
-        }
+.menu{
+    position:fixed;
+    top:15px;
+    left:15px;
+    font-size:30px;
+    cursor:pointer;
+    z-index:10000;
+}
 
-        .page-title {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: #f0f0f0;
-            font-family: "Stencil Std", fantasy;
-        }
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95);
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
+    z-index: 9999;
+}
 
-        .card-image {
-            width: 200px;
-            height: auto;
-            cursor: pointer;
-            transition: transform 0.3s, opacity 0.5s ease;
-            margin-bottom: 20px;
-        }
-        .carta-open{
-            color: #fff;
-            font-family: Arial, sans-serif;
-        }
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #fff;
+    display: block;
+}
 
-        .hidden-text {
-            max-width: 800px;
-            font-size: 1rem;
-            color: #f0f0f0;
-            text-align: center;
-            opacity: 0;
-            max-height: 0;
-            transition: opacity 0.5s ease;
-        }
+.sidebar a:hover {
+    background-color: #333;
+}
 
-        .show-text {
-            opacity: 1;
-            max-height: none; /* Remove o limite de altura */
-            padding: 20px; /* Adiciona um espaçamento para facilitar a leitura */
-        }
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
 
-        .hide-image {
-            opacity: 0; /* Essa classe não será mais utilizada */
-            pointer-events: none;
-        }
-    </style>
+
+
+/* HEADER */
+
+.header{
+
+    height:60px;
+    background:#202124;
+    display:flex;
+    align-items:center;
+    padding-left:70px;
+    font-size:22px;
+    font-weight:bold;
+    position:relative;
+    z-index:1;
+
+}
+
+.header span{
+
+    color:#ff4b5c;
+
+}
+
+
+
+/* LAYOUT */
+
+.container{
+
+    display:flex;
+    margin-top:60px;
+
+}
+
+
+
+/* MENU EMAIL */
+
+.mail-menu{
+
+    width:200px;
+    background:#1e1e1e;
+    height:calc(100vh - 60px);
+    padding-top:10px;
+
+}
+
+.mail-menu div{
+
+    padding:12px;
+    border-bottom:1px solid #333;
+
+}
+
+.mail-menu div:hover{
+
+    background:#333;
+
+}
+
+
+
+/* LISTA */
+
+.mail-box{
+
+    flex:1;
+    background:#151515;
+
+}
+
+.mail-header{
+
+    padding:15px;
+    border-bottom:1px solid #333;
+
+}
+
+.mail-item{
+
+    padding:15px;
+    border-bottom:1px solid #333;
+    cursor:pointer;
+
+}
+
+.mail-item:hover{
+
+    background:#333;
+
+}
+
+
+
+/* EMAIL ABERTO */
+
+.mail-open{
+
+    display:none;
+    padding:20px;
+
+}
+
+.mail-title{
+
+    font-size:18px;
+    margin-bottom:10px;
+
+}
+
+.back{
+
+    cursor:pointer;
+    margin-bottom:10px;
+    color:#4da3ff;
+
+}
+
+.mail-text{
+
+    line-height:1.6;
+
+}
+
+</style>
 </head>
 <body>
 
-    <!-- Ícone do menu com três pontos -->
-    <div class="menu" onclick="openMenu()">&#x22EE;</div>
 
-    <!-- Menu lateral -->
-    <div id="sidebar" class="sidebar">
-        <span class="close-btn" onclick="closeMenu()">&times;</span>
-        <a href="gel.html">Inicio</a>
-        <a href="cartaaberta.html">Carta Aberta</a>
-        <a href="Momentos.html">Musica que lembra você</a>
-        <a href="10motivos.html">10 Coisas que Amo em Você</a>
-        <a href="gidanflix.html">GIDANFLIX</a>
-        <a href="jornal.html">GIDAN NEWS</a>
-        <a href="cupons.html">CUPONS</a>
-    </div>
+<div class="menu" onclick="openMenu()">☰</div>
 
-    <!-- Título visível -->
-    <h1 class="page-title">CARTA ABERTA</h1>
 
-    <!-- Imagem da carta -->
-    <img src="carta.jpg" alt="Imagem de uma carta" class="card-image" id="cardImage" onclick="toggleText()">
-    <div class="carta-open">(clique na carta para abrir...)</div> 
+<div id="sidebar" class="sidebar">
 
-    <!-- Texto oculto abaixo do título -->
-    <div class="hidden-text" id="hiddenText">
-        <p>Sempre achei que o amor chegaria de uma forma avassaladora na minha vida, mas ele chegou quando eu menos esperava em um momento que não poderia ser melhor. O amor chegou de forma calma, mostrando que não precisa ser grandioso para ser grande na minha vida.</p>
-        <br>
-        <p>Com você eu tenho vivido meus melhores momentos, as melhores aventuras, as melhores risadas, o melhor sexo e acima de tudo, você tem sido minha melhor companhia. Você soube me mostrar uma forma leve de amar, me trouxe paz quando eu achava que não encontraria a calmaria na loucura da minha vida. Te amar tem sido a coisa mais fácil e mais leve que já fiz em toda a minha vida, você é meu primeiro pensamento ao acordar e o meu último na hora de dormir, você é a pessoa que traz cor aos meus dias cinzentos, ninguém jamais me teve de maneira tão verdadeira e sincera como você me tem.</p>
-        <br>
-        <p>Eu não fui o seu primeiro amor, mas espero que eu possa ser o último. Acho incrível que mesmo sendo jovens, conquistamos momentos incríveis juntos e conquistaremos um futuro ainda mais incrível ao lado um do outro. Estou tão feliz de poder compartilhar minha vida com você, eu te amo ❤️❤️❤️</p>
-    </div>
+<span class="close-btn" onclick="closeMenu()">×</span>
 
-    <script>
-        function openMenu() {
-            document.getElementById("sidebar").style.width = "250px";
-        }
+<a href="gel.html">Inicio</a>
+<a href="cartaaberta.html">Carta Aberta</a>
+<a href="Momentos.html">Musica que lembra você</a>
+<a href="10motivos.html">10 Coisas que Amo em Você</a>
+<a href="gidanflix.html">GIDANFLIX</a>
+<a href="jornal.html">GIDAN NEWS</a>
+<a href="cupons.html">CUPONS</a>
 
-        function closeMenu() {
-            document.getElementById("sidebar").style.width = "0";
-        }
+</div>
 
-        function toggleText() {
-            const hiddenText = document.getElementById("hiddenText");
-            const clickHint = document.getElementById("clickHint");
 
-            // Alterna a visibilidade do texto
-            if (hiddenText.classList.contains("show-text")) {
-                hiddenText.classList.remove("show-text");
-                clickHint.style.display = "block"; // Mostra a dica novamente
-            } else {
-                hiddenText.classList.add("show-text");
-                clickHint.style.display = "none"; // Esconde a dica
-            }
-        }
-    </script>
+
+<div class="header">
+
+GIDAN<span>MAIL</span>
+
+</div>
+
+
+
+<div class="container">
+
+
+<div class="mail-menu">
+
+<div>📥 Caixa de entrada</div>
+<div>✉️ Novo email</div>
+<div>📤 Enviados</div>
+<div>📝 Rascunhos</div>
+<div>⭐ Importantes</div>
+<div>🗑️ Lixeira</div>
+
+</div>
+
+
+
+<div class="mail-box">
+
+
+<div id="mailList">
+
+<div class="mail-header">
+
+Caixa de entrada (1)
+
+</div>
+
+
+<div class="mail-item" onclick="openMail()">
+
+<b>Giovana ❤️</b>
+<br>
+Você tem um novo correio…
+
+</div>
+
+</div>
+
+
+
+<div id="mailOpen" class="mail-open">
+
+
+<div class="back" onclick="backMail()">
+
+← voltar
+
+</div>
+
+
+<div class="mail-title">
+
+Para: Leandro ❤️
+
+</div>
+
+
+<div class="mail-text">
+
+<p>
+Sempre achei que o amor chegaria de uma forma avassaladora na minha vida,
+mas ele chegou quando eu menos esperava em um momento que não poderia ser melhor.
+O amor chegou de forma calma, mostrando que não precisa ser grandioso para ser grande na minha vida.
+</p>
+
+<br>
+
+<p>
+Com você eu tenho vivido meus melhores momentos,
+as melhores aventuras,
+as melhores risadas,
+o melhor sexo e acima de tudo,
+você tem sido minha melhor companhia.
+Você soube me mostrar uma forma leve de amar,
+me trouxe paz quando eu achava que não encontraria a calmaria na loucura da minha vida.
+Te amar tem sido a coisa mais fácil e mais leve que já fiz em toda a minha vida.
+</p>
+
+<br>
+
+<p>
+Eu não fui o seu primeiro amor,
+mas espero que eu possa ser o último.
+Estou tão feliz de poder compartilhar minha vida com você,
+eu te amo ❤️❤️❤️
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<script>
+
+function openMenu() {
+    document.getElementById("sidebar").style.width = "250px";
+}
+
+function closeMenu() {
+    document.getElementById("sidebar").style.width = "0";
+}
+
+function openMail(){
+
+    document.getElementById("mailList").style.display="none";
+    document.getElementById("mailOpen").style.display="block";
+
+}
+
+function backMail(){
+
+    document.getElementById("mailList").style.display="block";
+    document.getElementById("mailOpen").style.display="none";
+
+}
+
+</script>
 
 </body>
 </html>
