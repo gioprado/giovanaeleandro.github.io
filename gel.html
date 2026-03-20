@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GIDAN</title>
+
     <style>
-        /* Estilo do corpo */
+
         body {
             display: flex;
             align-items: center;
@@ -13,13 +14,13 @@
             flex-direction: column;
             min-height: 100vh;
             margin: 0;
-            background-color: #000;
+            background: linear-gradient(135deg, #000, #ff4b5c);
             color: #fff;
             font-family: Arial, sans-serif;
             text-align: center;
+            overflow-x: hidden;
         }
 
-        /* Estilo da imagem com borda */
         .center-image {
             width: 100%;
             max-width: 300px;
@@ -29,19 +30,17 @@
             box-sizing: border-box;
         }
 
-        /* Estilo do texto */
         .count-text {
             font-size: 24px;
         }
 
-        /* Estilo da linha */
         .line {
             width: 350px;
             height: 2px;
             background-color: #fff;
             margin: 20px auto;
         }
-        /* Estilo do menu */
+
         .menu {
             position: fixed;
             top: 20px;
@@ -52,37 +51,30 @@
             z-index: 10;
         }
 
-        /* Estilo do menu lateral */
         .sidebar {
             position: fixed;
             top: 0;
             left: 0;
             width: 0;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.95);
             overflow-x: hidden;
             transition: 0.3s;
             padding-top: 60px;
-            color: #fff;
-            font-family: Arial, sans-serif;
         }
 
-        /* Estilo dos links no menu lateral */
         .sidebar a {
             padding: 10px 15px;
             text-decoration: none;
             font-size: 14px;
             color: #fff;
             display: block;
-            transition: 0.3s;
         }
 
-        /* Efeito hover nos links */
         .sidebar a:hover {
             background-color: #333;
         }
 
-        /* Estilo do botão de fechar */
         .close-btn {
             position: absolute;
             top: 20px;
@@ -91,21 +83,55 @@
             cursor: pointer;
         }
 
-           /* Estilo do título visível */
-           .page-title {
+        .page-title {
             color: #fff;
             font-size: 36px;
-            font-family: "Stencil Std", fantasy; /* Define a fonte Stencil Std */
+            font-family: "Stencil Std", fantasy;
             margin: 20px 0;
         }
+
+        .frase {
+            font-size: 18px;
+            max-width: 400px;
+            margin-bottom: 15px;
+        }
+
+        #contador {
+    margin-top: 25px;
+    font-size: 22px;
+    background: rgba(0,0,0,0.5);
+    display: inline-block;
+    padding: 15px 25px;
+    border-radius: 10px;
+}
+
+        /* corações */
+
+        .heart {
+            position: fixed;
+            color: #ff4b5c;
+            font-size: 20px;
+            animation: float 6s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+
     </style>
 </head>
 <body>
-    
-    <!-- Ícone do menu com três pontos -->
+
+    <!-- menu -->
     <div class="menu" onclick="openMenu()">&#x22EE;</div>
 
-    <!-- Menu lateral -->
     <div id="sidebar" class="sidebar">
         <span class="close-btn" onclick="closeMenu()">&times;</span>
         <a href="gel.html">Inicio</a>
@@ -118,63 +144,71 @@
         <a href="thomas.html">THOMAS</a>
     </div>
 
-    <!-- Título visível -->
-    <h1 class="page-title">GIDAN</h1>
 
-    <!-- Imagem centralizada com borda branca -->
-    <img src="ny.jpg" alt="Imagem central" class="center-image">
+    <h1 class="page-title">GIDAN ❤️</h1>
 
-    <!-- Data e contagem de tempo -->
+    <div class="frase">
+        Nossa história começou em Nova York  
+        no dia 25 de agosto de 2024  
+        e desde então minha vida ficou muito mais feliz ❤️
+    </div>
+
+    <img src="ny.jpg" class="center-image">
+
     <div class="date-text">25 de agosto de 2024</div>
+
     <br>
+
     <div id="countTime" class="count-text"></div>
 
-    <br>
-
-    <!-- Linha branca com 3024 pixels de largura usando div -->
     <div class="line"></div>
 
-    <br>
-    <div class="love-text">fiz esse site com muito carinho, 
-        <br>
-        espero que goste!</div>
-    
-    <script>
-         
-        // Funções para abrir e fechar o menu
-        function openMenu() {
-            document.getElementById("sidebar").style.width = "250px";
-        }
+    <div class="love-text">
+        fiz esse site com muito carinho ❤️  
+        espero que goste!
+    </div>
 
-        function closeMenu() {
-            document.getElementById("sidebar").style.width = "0";
-        }
 
-        // Data inicial: 25 de agosto de 2024
-        const startDate = new Date('2024-08-25');
+<script>
 
-        function updateTime() {
-            const now = new Date();
-            let diffInSeconds = Math.floor((now - startDate) / 1000);
+function openMenu() {
+    document.getElementById("sidebar").style.width = "250px";
+}
 
-            const months = Math.floor(diffInSeconds / (30 * 24 * 60 * 60));
-            diffInSeconds %= (30 * 24 * 60 * 60);
+function closeMenu() {
+    document.getElementById("sidebar").style.width = "0";
+}
 
-            const days = Math.floor(diffInSeconds / (24 * 60 * 60));
-            diffInSeconds %= (24 * 60 * 60);
 
-            const hours = Math.floor(diffInSeconds / (60 * 60));
-            diffInSeconds %= (60 * 60);
+const startDate = new Date("2024-08-25T00:00:00");
 
-            const minutes = Math.floor(diffInSeconds / 60);
-            const seconds = diffInSeconds % 60;
+function updateTime() {
 
-            document.getElementById('countTime').textContent = 
-                `${months} meses, ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos junto com você`;
-        }
+    const now = new Date();
 
-        setInterval(updateTime, 1000);
-    </script>
+    const diff = now - startDate;
+
+    const totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    const years = Math.floor(totalDays / 365);
+
+    const months = Math.floor((totalDays % 365) / 30);
+
+    const days = Math.floor((totalDays % 365) % 30);
+
+    document.getElementById("countTime").innerHTML =
+        "Estamos juntos há ❤️<br>" +
+        years + " anos, " +
+        months + " meses e " +
+        days + " dias";
+}
+
+setInterval(updateTime, 1000);
+
+updateTime();
+
+
+</script>
+
 </body>
 </html>
-
