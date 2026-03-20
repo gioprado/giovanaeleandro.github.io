@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
-        /* Estilo do corpo */
         body {
             display: flex;
             align-items: center;
@@ -12,36 +12,93 @@
             flex-direction: column;
             min-height: 100vh;
             margin: 0;
-            background-color: #000;
             font-family: Arial, sans-serif;
             text-align: center;
+            background: linear-gradient(135deg, #ff4b5c, #000);
+            color: white;
+            overflow: hidden;
         }
 
-        /* Estilo do botão */
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
         .button {
-            padding: 15px 30px;
+            padding: 15px 35px;
             font-size: 18px;
             color: #fff;
-            background-color: #007bff; /* Cor azul */
+            background-color: #ff0066;
             border: none;
-            border-radius: 5px; /* Cantos arredondados */
+            border-radius: 30px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: 0.3s;
+            box-shadow: 0 0 15px #ff0066;
         }
 
-        /* Efeito ao passar o mouse */
         .button:hover {
-            background-color: #0056b3; /* Azul mais escuro ao passar o mouse */
+            background-color: #ff3385;
+            transform: scale(1.1);
         }
+
+        /* corações */
+        .heart {
+            position: absolute;
+            color: #ff4b5c;
+            font-size: 20px;
+            animation: float 6s infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+
     </style>
 </head>
 <body>
-    <button class="button" onclick="openPage()">Clique aqui e descubra</button>
+
+    <h1>❤️ Bem-vindo ao nosso cantinho ❤️</h1>
+ </br>
+ 
+    <button class="button" onclick="openPage()">
+        Clique para ver nossa história
+    </button>
 
     <script>
         function openPage() {
-            window.location.href = 'gel.html'; // Altere para o caminho correto se necessário
+            window.location.href = 'gel.html';
         }
+
+        // criar corações animados
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = Math.random() * 20 + 10 + "px";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        setInterval(createHeart, 500);
     </script>
+
 </body>
 </html>
